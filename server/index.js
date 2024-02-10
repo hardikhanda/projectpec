@@ -21,7 +21,7 @@ app.use(express.json()); //req.body
 
 
 
-app.listen(3001, () => {
-    console.log("server has started on port 3001");
+app.listen(5000, () => {
+    console.log("server has started on port 3000");
   });
 
