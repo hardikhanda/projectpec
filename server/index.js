@@ -13,10 +13,9 @@ const supabase = createClient(
 
 const main = async () => {
   let { data, error } = await supabase
-    .from('countries')
-    .select('name, continent')
-    .order('continent', {ascending: true})
-    .range(0,10)
+    .from('user')
+    .select('*')
+
 
   if (error) {
     console.error(error)
