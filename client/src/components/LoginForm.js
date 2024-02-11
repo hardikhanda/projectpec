@@ -1,5 +1,3 @@
-// LoginForm.js
-
 import React, { useState } from 'react';
 
 const LoginForm = ({ onLogin }) => {
@@ -10,13 +8,14 @@ const LoginForm = ({ onLogin }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
+      
       const data = await response.json();
       console.log(data);
       onLogin(data.token); // Assuming backend sends a token upon successful login
