@@ -136,37 +136,4 @@ html, body {
     background-color: #0056b3; /* Darker background color on hover */
   }
   
-  /* Background image with blur effect */
-  body {
-    background-image: url('C:\Users\ANKUR GAIPURIA\OneDrive\Desktop\projectpec\projectpec\client\public\Main_Entrance_of_PEC_Chandigarh.jpg'); /* Path to local image */
-    background-size: cover; /* Cover the entire background */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    background-position: center center; /* Center the background image */
-    background-attachment: fixed; /* Fix the background image */
-  }
   
-  /* Add blur effect to background image when login container is focused */
-  .login-container.focused + .background-overlay {
-    filter: blur(5px); /* Apply blur effect */
-  }
-  
-  /* Background overlay for blur effect */
-  .background-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white overlay */
-    z-index: -1; /* Ensure the overlay is behind other content */
-  }
-  
-  
-  
-  /* Media query for responsiveness */
-  @media screen and (max-width: 768px) {
-    .login-container {
-      width: 90%; /* Adjust width for smaller screens */
-      max-width: 300px; /* Maximum width for smaller screens */
-    }
-  }

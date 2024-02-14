@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
+import { jwtDecode } from "jwt-decode";
 
 
 const LoginForm = ({ onLogin }) => {
@@ -17,7 +18,7 @@ const LoginForm = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('/login', {
         method: 'POST',
@@ -29,12 +30,26 @@ const LoginForm = ({ onLogin }) => {
       
       const data = await response.json();
       console.log(data);
-      onLogin(data.token); // Assuming backend sends a token upon successful login
+      // Check user role and redirect accordingly
+      if (data.token) {
+        const decodedToken = jwtDecode(data.token); // Assuming you're using jwt-decode library
+        if (decodedToken && decodedToken.role === 'student') {
+          // Redirect to student dashboard
+          window.location.href = '/student-dashboard';
+        } else if (decodedToken && decodedToken.role === 'teacher') {
+          // Redirect to teacher dashboard
+          window.location.href = '/teacher-dashboard';
+        }
+      } else {
+        // Handle login failure
+        console.error('Login failed:', data.error);
+      }
     } catch (error) {
       console.error('Login failed:', error);
       // Handle error
     }
   };
+  
 
   return (
     <div className="login-page">

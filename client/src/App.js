@@ -1,19 +1,19 @@
 import './App.css';
-import supabase from './config/supabaseClient';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from '../src/pages/Login';
-import Dashboard from '../src/pages/Dashboard';
+import StudentDashboard from './components/StudentDashboard';
+import TeacherDashboard from './components/TeacherDashboard';
+
 
 function App() {
 
-  console.log(supabase);
-  
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
       </Routes>
     </Router>
   );

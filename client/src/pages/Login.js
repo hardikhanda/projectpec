@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import LoginForm from '../components/LoginForm';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import "./Login.css";
+ // Import useNavigate hook
 
 const Login = () => {
 //   const [token, setToken] = useState(null);
@@ -18,8 +17,8 @@ const Login = () => {
       {/* {token ? (
         <p>You are logged in!</p>
       ) : ( */}
-        <div className='containeri' >
-          {/* <h2 className='login' >LOGIN</h2> */}
+        <div>
+          <h2>Login</h2>
           <LoginForm />
         </div>
     </div>
