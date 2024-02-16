@@ -1,0 +1,35 @@
+.navbar-logo {
+    height: 40px; /* Adjust the height as per your requirement */
+    margin-left: 10px; /* Optional: Add some spacing between logo and brand text */
+    height: 40px; /* Adjust the height as per your requirement */
+    margin-left: auto; /* Automatically aligns the logo to the right */
+    margin-right: auto; /* Automatically aligns the logo to the left */
+  }
+
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    margin-right: 10px; /* Adjust the spacing between the buttons */
+  }
+  
+  .ml-auto {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 991px) {
+    .ml-auto {
+      margin-left: auto; /* Align ml-auto content to the right when collapsed */
+    }
+    .navbar-logo {
+      margin-left: 10px; /* Optional: Add some spacing between logo and brand text on larger screens */
+    }
+  }
+  
+  .center-button {
+margin-top: 15px;
+border-radius: 20px;
+  }
