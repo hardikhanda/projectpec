@@ -4,6 +4,7 @@ import { Navbar, Nav, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
+import { Link } from 'react-router-dom';
 
 
 const Navi = () => {
@@ -18,9 +19,11 @@ const Navi = () => {
           <Nav.Link href="#tasks">My Tasks</Nav.Link>
         </Nav>
         <Nav className="ml-auto" >
-          <Button variant="success" className="center-button">
+          <Link className="nav-link" to="/student-dashboard/create">
+          <Button variant="success" className="center-button" >
             <FontAwesomeIcon icon={faPlus} /> Create
           </Button>
+          </Link>
           <Nav.Link href="#user"><img src="https://www.freeiconspng.com/uploads/blue-circle-png-5.png" className="navbar-logo"></img></Nav.Link>
         </Nav>
       </Navbar.Collapse>

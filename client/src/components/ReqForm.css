@@ -1,0 +1,27 @@
+/* EventForm.css */
+
+* {
+  margin: 20px;
+  margin-top: 3px;
+}
+
+.form-container {
+
+  margin: 0 auto;
+  height: 600px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.center-button {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

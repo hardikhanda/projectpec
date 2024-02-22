@@ -48,6 +48,76 @@ app.post('/login', async (req, res) => {
   }
 });
 
+// API endpoint to create a request
+app.post('/requests', async (req, res) => {
+  const { email, service, description } = req.body;
+
+  try {
+    // Query the database to get the user's role
+    const { data: user, error } = await supabase
+      .from('user')
+      .select('id, email, role') // Include user's role
+      .eq('email', email)
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    // Assuming the user is authenticated successfully
+    // Check if the user's role allows them to create a request
+    if (user.role !== 'student') {
+      throw new Error('Only students can create requests');
+    }
+
+    // Insert the request into the database
+    const result = await supabase
+      .from('requests')
+      .insert({ user_id: user.id, service, description, approved: false })
+      .single();
+
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// API endpoint to approve a request
+app.post('/requests/:requestId/approve', async (req, res) => {
+  const { requestId, email } = req.params;
+
+  try {
+    // Query the database to get the user's role
+    const { data: user, error } = await supabase
+      .from('user')
+      .select('id, email, role') // Include user's role
+      .eq('email', email)
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    // Assuming the user is authenticated successfully
+    // Check if the user's role allows them to approve a request
+    if (user.role !== 'staff') {
+      throw new Error('Only staff members can approve requests');
+    }
+
+    // Update the request in the database to mark it as approved
+    const result = await supabase
+      .from('requests')
+      .update({ approved: true })
+      .eq('id', requestId)
+      .single();
+
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+
 app.listen(5000, () => {
   console.log("server has started on port 5000");
 });
